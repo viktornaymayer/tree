@@ -6,8 +6,8 @@
 	<title>Tree</title>
 
 	<style>
-		ul{display:none;cursor:pointer}     <!-- скрываем все списки и делаем курсор пальчиком -->
-		.tree > ul{display:block}			<!-- показываем только первый ряд каталогов -->
+		ul{display:none;list-style-type:none;cursor:pointer}
+		.tree > ul{display:list-item}
 	</style>
 
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
@@ -43,7 +43,7 @@ function tree($arr, $parent){
 	echo "<ul>\n"; 									// открываем список
 	foreach ($arr as $val){							// перебираем наш массив
 		if ($val['parent']==$parent){				// если у элемента указан родитель переданный в функцию
-			echo "<li>{$val['name']}</li>\n";			// то записываем этот элемент в список
+			echo "<li>{$val['name']}</li>\n";		// то записываем этот элемент в список
 			foreach ($arr as $v){					// снова перебираем наш массив
 				if ($val['name']==$v['parent']){	// если находим что записанный элемент является чьим то родителем
 					tree($arr,$v['parent']);		// производим обратный вызов функции, но в качестве родителя передаем наш элемент
